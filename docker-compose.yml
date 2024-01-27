@@ -5,6 +5,7 @@ services:
     image: php:latest
     volumes:
       - ./index.php:/var/www/html/index.php
+      - ./:/var/www/html/
     ports:
       - "8080:80"
     command: ["php", "-S", "0.0.0.0:80", "-t", "/var/www/html/"]
