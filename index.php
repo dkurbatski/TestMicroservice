@@ -1,3 +1,12 @@
 <?php
 include "./task_1.php";
-var_dump('testProject');
+$list = [
+    [1, 2, 3],
+    [
+        [4, 4, 4],
+        ["rrr", 5, 5]
+    ],
+    7
+];
+writer($list);
+
