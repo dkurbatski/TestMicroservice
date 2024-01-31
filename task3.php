@@ -1,14 +1,23 @@
 <?php
 $list=[
-    [1, 2, 3],
     [
         [4, 4, 4],
         ["rrr", 5, 5]
     ],
-    7
+    [
+        [4, 4, 4],
+        ["rrr", 5, 5]
+    ]
 ];
 writer($list);
-function writer($value)
-{
 
+function writer(array $currentList)
+{
+    foreach ($currentList as $item){
+        if (is_array($item)){
+            writer($item);
+        } else {
+            var_dump($item);
+        }
+    }
 }
