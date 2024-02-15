@@ -1,14 +1,15 @@
 <?php
+
+use GuzzleHttp\Client;
+
 require_once $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 
-include "./task_1.php";
-$list = [
-    [1, 2, 3],
-    [
-        [4, 4, 4],
-        ["rrr", 5, 5]
-    ],
-    7
-];
-writer($list);
+$client = new Client();
+$response = $client->request('GET', 'https://www.boredapi.com/api/activity');
+
+//echo $response->getStatusCode(); // 200
+//echo $response->getHeaderLine('content-type'); // 'application/json; charset=utf8'
+if ($response->getStatusCode()==200){
+    var_dump(json_decode($response->getBody(),true));
+}
 
