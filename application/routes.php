@@ -1,6 +1,7 @@
 <?php
 
 use App\Controller\AutoController;
+use App\Controller\PhoneController;
 use App\Controller\RateController;
 use App\Controller\TestController;
 
@@ -13,5 +14,6 @@ $router->map('POST', '/auto', [AutoController::class, 'add']);
 $router->map('GET', '/rate', [RateController::class, 'list']);
 $router->map('PUT', '/rate', [RateController::class, 'update']);
 
+$router->map('GET', '/phone/info', [PhoneController::class, 'info']);
 
 return $router;
