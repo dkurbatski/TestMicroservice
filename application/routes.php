@@ -1,5 +1,6 @@
 <?php
 
+use App\Controller\AuthorController;
 use App\Controller\AutoController;
 use App\Controller\PhoneController;
 use App\Controller\RateController;
@@ -15,5 +16,7 @@ $router->map('GET', '/rate', [RateController::class, 'list']);
 $router->map('PUT', '/rate', [RateController::class, 'update']);
 
 $router->map('GET', '/phone/info', [PhoneController::class, 'info']);
+
+$router->map('GET', '/author/info', [AuthorController::class, 'info']);
 
 return $router;
