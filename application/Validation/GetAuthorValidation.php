@@ -8,10 +8,12 @@ class GetAuthorValidation
 {
     public static function validate(
         ?string $name,
-        ?string $surname
+        ?string $surname,
+        ?string $birth_date,
+        ?string $country
     ): array
     {
-        if (!$name || !$surname) {
+        if (!$name || !$surname || !$country || !$birth_date) {
             return ['error' => 'Wrong params'];
         }
         if (strlen($surname) < 2) {

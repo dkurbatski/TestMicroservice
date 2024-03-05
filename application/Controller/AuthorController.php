@@ -15,12 +15,18 @@ class AuthorController
     {
         $surname = $request->get('surname');
         $name = $request->get('name');
-        if ($error = GetAuthorValidation::validate($name, $surname)) {
+        $birth_date=$request->get('birth_date');
+        $country=$request->get('country');
+        if ($error = GetAuthorValidation::validate($name, $surname,$birth_date,$country)) {
             return new JsonResponse($error);
         }
+        global $connect;
+        $connect->query("INSERT IGNORE `author`(`name`,`surname`,`birth_date`,`country`) values (?, ?, ?, ?)", $name, $surname, $birth_date, $country)->fetch();
         return new JsonResponse([
-            'name'=>$name,
-            'surname'=>$surname
+            'name' => $name,
+            'surname' => $surname,
+            'country'=>$country,
+            'birth_date'=>$birth_date
         ]);
     }
 }
